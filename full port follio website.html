@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nurye's Portfolio</title>
+  <style>
+    /* Reset default margin/padding & set box-sizing globally */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f7f8;
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* NAVBAR Container */
+    nav {
+      background-color: #739d5c;
+      color: rgb(167, 66, 66);
+      padding: 15px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(41, 223, 53, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    /* Logo */
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #00bfa6;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.3s ease;
+    }
+    .logo:hover {
+      color: #00d9bc;
+    }
+
+    /* Navigation links container */
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+
+
+
+    
+
+    /* Individual nav links */
+    .nav-links li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 8px 12px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      display: inline-block;
+    }
+
+    /* Hover effect on nav links */
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      background-color: #00bfa6;
+      color: #0d2538;
+    }
+
+    /* Hamburger menu icon - hidden on desktop */
+    .hamburger {
+      display: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: white;
+      user-select: none;
+    }
+
+    /* Responsive Styles for smaller screens */
+    @media (max-width: 768px) {
+      /* Hide nav links by default on mobile */
+      .nav-links {
+        flex-direction: column;
+        background-color: #0d2538;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        padding: 20px 0;
+        display: none;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        border-radius: 0 0 12px 12px;
+        z-index: 999;
+      }
+
+      /* Show nav links when menu is active */
+      .nav-links.active {
+        display: flex;
+      }
+
+      /* Hamburger shown on mobile */
+      .hamburger {
+        display: block;
+      }
+    }
+
+    /* Container for the page content */
+    main {
+      flex-grow: 1;
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    /* About Section */
+    #about {
+      background-color: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.05);
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    /* Profile image */
+    #about img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid #00bfa6;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      flex-shrink: 0;
+    }
+
+    /* About text */
+    #about .about-text {
+      flex: 1;
+      min-width: 280px;
+    }
+    #about h2 {
+      color: #0d2538;
+      margin-bottom: 15px;
+    }
+    #about p {
+      font-size: 1.1rem;
+      color: #444;
+      line-height: 1.5;
+    }
+
+    /* Skills Section */
+    #skills {
+      margin-top: 60px;
+      background-color: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.05);
+    }
+    #skills h2 {
+      color: #0d2538;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    /* Skill bars container */
+    .skill {
+      margin-bottom: 20px;
+    }
+
+    /* Skill label and progress bar wrapper */
+    .skill-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    /* Skill progress bar background */
+    .skill-bar-bg {
+      background-color: #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 18px;
+    }
+
+    /* Skill progress bar fill */
+    .skill-bar-fill {
+      height: 100%;
+      background-color: #00bfa6;
+      width: 0%;
+      border-radius: 10px;
+      transition: width 1.5s ease-in-out;
+    }
+
+    /* Contact Section */
+    #contact {
+      margin-top: 60px;
+      background-color: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.05);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #contact h2 {
+      color: #0d2538;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    /* Form styles */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    input, textarea {
+      padding: 12px 15px;
+      border: 1.5px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      resize: vertical;
+      font-family: inherit;
+      transition: border-color 0.3s ease;
+    }
+    input:focus, textarea:focus {
+      border-color: #00bfa6;
+      outline: none;
+    }
+    button.submit-btn {
+      background-color: #00bfa6;
+      color: white;
+      padding: 15px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: background-color 0.3s ease;
+    }
+    button.submit-btn:hover {
+      background-color: #009d87;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #0d2538;
+      color: white;
+      text-align: center;
+      padding: 20px 15px;
+      margin-top: auto;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <nav>
+    <div class="logo">Nurye<span style="color:#00d9bc;">.</span></div>
+
+    <!-- Hamburger icon for mobile -->
+    <div class="hamburger" id="hamburger">&#9776;</div>
+
+    <!-- Navigation links -->
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about" class="active">About Me</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <!-- ABOUT ME SECTION -->
+    <section id="about">
+      <img src="nure.jpg" alt="Nurye Yimam Photo" />
+      <div class="about-text">
+        <h2>Hello! I'm Nurye Yimam</h2>
+        <p>
+          I'm a passionate and dedicated beginner web developer currently studying at NEC College. I love creating clean, modern, and responsive websites using HTML, CSS, PHP, and JavaScript. My goal is to become a skilled developer and build projects that help people.
+        </p>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills">
+      <h2>My Skills</h2>
+
+      <div class="skill">
+        <div class="skill-label">
+          <span>HTML</span>
+          <span>90%</span>
+        </div>
+        <div class="skill-bar-bg">
+          <div class="skill-bar-fill" style="width: 90%;"></div>
+        </div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-label">
+          <span>CSS</span>
+          <span>80%</span>
+        </div>
+        <div class="skill-bar-bg">
+          <div class="skill-bar-fill" style="width: 80%;"></div>
+        </div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-label">
+          <span>JavaScript</span>
+          <span>50%</span>
+        </div>
+        <div class="skill-bar-bg">
+          <div class="skill-bar-fill" style="width: 50%;"></div>
+        </div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-label">
+          <span>PHP</span>
+          <span>40%</span>
+        </div>
+        <div class="skill-bar-bg">
+          <div class="skill-bar-fill" style="width: 40%;"></div>
+        </div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-label">
+          <span>MySQL</span>
+          <span>40%</span>
+        </div>
+        <div class="skill-bar-bg">
+          <div class="skill-bar-fill" style="width: 40%;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <form>
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Nurye Yimam. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Toggle mobile menu visibility on hamburger click
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Optional: Highlight active nav link on scroll
+    const sections = document.querySelectorAll('main section');
+    const navItems = document.querySelectorAll('.nav-links li a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 80;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navItems.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').includes(current)) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

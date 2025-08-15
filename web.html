@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nurye | My Power</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      transition: background 1.2s ease;
+      background: #1a1a2e;
+      color: #fff;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 25px;
+      background: #222;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: white;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: orange;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle div {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 4px;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background: #444;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        padding: 20px;
+      }
+      nav.show {
+        display: flex;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
+    .profile {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .profile img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+      margin-bottom: 20px;
+    }
+
+    .section {
+      max-width: 800px;
+      margin: 20px auto;
+      background: rgba(255,255,255,0.05);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      transform: translateY(40px);
+      opacity: 0;
+      transition: all 0.8s ease;
+    }
+
+    .section.show {
+      transform: translateY(0px);
+      opacity: 1;
+    }
+
+    .section h2 {
+      border-bottom: 2px solid orange;
+      padding-bottom: 5px;
+    }
+
+    .skill-bar {
+      margin: 15px 0;
+    }
+
+    .skill-bar p {
+      margin: 5px 0;
+    }
+
+    .bar {
+      background: #555;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .bar-inner {
+      height: 20px;
+      background: orange;
+      border-radius: 20px;
+      width: 0;
+      transition: width 1s ease;
+    }
+
+    .btn-bg {
+      margin: 10px auto;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn-bg button {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #eee;
+      color: #222;
+      font-weight: bold;
+    }
+
+  </style>
+</head>
+<body>
+
+
+
+
+
+<header>
+  <div class="logo">Nurye</div>
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <div></div><div></div><div></div>
+  </div>
+  <nav id="navbar">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#greatness">Greatness</a>
+    <a href="#">Login</a>
+    <a href="#">Signup</a>
+    <a href="#">Logout</a>
+  </nav>
+</header>
+
+
+
+
+
+
+<section class="profile" id="home">
+  <img src="nurye.jpg" alt="Your Photo">
+  <h1>Hello, I’m Nurye 👋</h1>
+  <p>Web Developer | Video Edditor | English Learner</p>
+</section>
+
+<div class="btn-bg">
+  <button onclick="changeBackground()">🎨 Change Background</button>
+  <button onclick="showSections()">✨ Show Content</button>
+</div>
+
+<div class="section" id="about">
+  <h2>About Me</h2>
+  <p>
+    I’m Nurye — a 21-year-old focused, disciplined dreamer from Ethiopia. Every day I build my future with love, truth, and hard work. I believe in a no-excuse mindset, growing from failure, and respecting my family’s investment. I'm not perfect — but I'm always improving.
+  </p>
+</div>
+
+<div class="section" id="skills">
+  <h2>My Skills</h2>
+
+  <div class="skill-bar">
+    <p>HTML / CSS</p>
+    <div class="bar"><div class="bar-inner" style="width: 95%;"></div></div>
+  </div>
+
+  <div class="skill-bar">
+    <p>JavaScript</p>
+    <div class="bar"><div class="bar-inner" style="width: 80%;"></div></div>
+  </div>
+
+  <div class="skill-bar">
+    <p>PHP & MySQL</p>
+    <div class="bar"><div class="bar-inner" style="width: 70%;"></div></div>
+  </div>
+
+  <div class="skill-bar">
+    <p>Video Editing</p>
+    <div class="bar"><div class="bar-inner" style="width: 85%;"></div></div>
+  </div>
+
+  <div class="skill-bar">
+    <p>English Fluency</p>
+    <div class="bar"><div class="bar-inner" style="width: 65%;"></div></div>
+  </div>
+</div>
+
+<div class="section" id="greatness">
+  <h2>Attitude, Greatness & Weakness</h2>
+  <h3>🔥 Attitude:</h3>
+  <ul>
+    <li>Discipline (3:30 AM wake-up)</li>
+    <li>No Excuse Mindset</li>
+    <li>Deep Respect for Growth</li>
+  </ul>
+  <h3>🌟 Greatness:</h3>
+  <ul>
+    <li>I stay strong under pressure</li>
+    <li>I lead myself and others (like my friends)</li>
+    <li>I think deeply about truth and success</li>
+  </ul>
+  <h3>⚠️ Weaknesses:</h3>
+  <ul>
+    <li>Sometimes rush work without checking</li>
+    <li>Doubt in myself during difficult days</li>
+    <li>Need to stay more focused on one goal at a time</li>
+  </ul>
+</div>
+
+<script>
+  // Navbar toggle
+  function toggleMenu() {
+    const nav = document.getElementById('navbar');
+    nav.classList.toggle('show');
+  }
+
+  // Background change on click
+  const bgColors = ['#1a1a2e', '#0f3460', '#2b2e4a', '#53354a', '#16213e', '#232931', '#202040'];
+  let bgIndex = 0;
+  function changeBackground() {
+    bgIndex = (bgIndex + 1) % bgColors.length;
+    document.body.style.background = bgColors[bgIndex];
+  }
+
+  // Show sections with animation
+  function showSections() {
+    const sections = document.querySelectorAll('.section');
+    sections.forEach((sec, i) => {
+      setTimeout(() => {
+        sec.classList.add('show');
+      }, 400 * i);
+    });
+  }
+</script>
+
+</body>
+</html>
